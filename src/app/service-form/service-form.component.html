@@ -1,1 +1,43 @@
-<p>service-form works!</p>
+<div class="form-container">
+  <h2>¿Qué servicio necesitas?</h2>
+  <p>¡Chatea con nuestros profesionales al momento, te ayudamos a solucionar tu problema y encontramos tu presupuesto ideal!</p>
+
+  <form (ngSubmit)="enviarFormulario()">
+    <div class="input-group">
+      <label>Categoría</label>
+      <select id="categoria" [(ngModel)]="form.categoria" name="categoria" required>
+        <option *ngFor="let c of categorias" [value]="c">{{ c }}</option>
+
+      </select>
+    </div>
+
+    <div class="input-group">
+      <label>Subcategoría</label>
+      <select [(ngModel)]="form.subcategoria" name="subcategoria" required>
+        <option *ngFor="let s of subcategorias" [value]="s">{{ s }}</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <label>Título</label>
+      <input type="text" [(ngModel)]="form.titulo" name="titulo" placeholder="Ej. Filtraciones en la cocina" required />
+    </div>
+
+    <div class="input-group">
+      <label>Descripción de servicio</label>
+      <textarea [(ngModel)]="form.descripcion" name="descripcion" placeholder="Ej. Tengo una filtración en la cocina que necesito reparar..." required></textarea>
+    </div>
+
+    <div class="input-group">
+      <label>Ubicación</label>
+      <input type="text" [(ngModel)]="form.ubicacion" name="ubicacion" placeholder="Ej. ubicación del trabajo a realizar" required />
+    </div>
+
+    <div class="input-group">
+      <label>Foto</label>
+      <input type="file" (change)="subirFoto($event)" />
+    </div>
+
+    <button type="submit">Pedir presupuesto</button>
+  </form>
+</div>
